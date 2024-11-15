@@ -5,25 +5,8 @@ import AppMenuItem from './AppMenuItem.vue';
 
 const model = ref([
     {
-        label: 'UI Components',
-        items: [
-            { label: 'Table', icon: 'pi pi-fw pi-table', to: '/uikit/table' },
-            {
-                label: 'Crud',
-                icon: 'pi pi-fw pi-pencil',
-                to: '/pages/crud'
-            },
-            {
-                label: 'Error',
-                icon: 'pi pi-fw pi-times-circle',
-                to: '/auth/error'
-            },
-            {
-                label: 'Access Denied',
-                icon: 'pi pi-fw pi-lock',
-                to: '/auth/access'
-            }
-        ]
+        label: 'Menu Detail',
+        items: [{ label: 'Invoices', icon: 'pi pi-fw pi-table', to: '/uikit/table' }]
     },
     {
         label: 'Get Started',

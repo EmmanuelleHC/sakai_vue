@@ -1,32 +1,28 @@
 <script setup>
-import FloatingConfigurator from '@/components/FloatingConfigurator.vue';
-import { ref } from 'vue';
-import apiClient from '@/axios';
+import { useStore } from 'vuex';
 import { useRouter } from 'vue-router';
+import { ref } from 'vue';
 
+// Setup variables
+const store = useStore();
 const router = useRouter();
 const email = ref('');
 const password = ref('');
-const checked = ref(false);
-const error = ref(null);
-
+const error = ref('');
+const checked = ref('');
+// Login function
 const login = async () => {
     try {
-        const response = await apiClient.post('/login', {
-            email: email.value,
-            password: password.value
-        });
+        await store.dispatch('login', { email: email.value, password: password.value });
 
-        localStorage.setItem('token', response.data.token);
+        const redirectPath = router.currentRoute.value.query.redirect || '/uikit/table';
 
-        router.push('/dashboard');
+        router.push(redirectPath);
     } catch (err) {
-        error.value = 'Invalid email or password';
-        console.error('Login failed:', err);
+        error.value = err.message;
     }
 };
 </script>
-
 <template>
     <FloatingConfigurator />
     <div class="bg-surface-50 dark:bg-surface-950 flex items-center justify-center min-h-screen min-w-[100vw] overflow-hidden">

@@ -24,14 +24,13 @@ const logout = () => {
             {},
             {
                 headers: {
-                    Authorization: `Bearer ${token}` // Include the token
+                    Authorization: `Bearer ${token}`
                 }
             }
         )
         .then(() => {
-            alert('Logged out successfully.');
-            localStorage.removeItem('token'); // Clear token from local storage
-            router.push('/login'); // Redirect to login
+            localStorage.removeItem('token');
+            router.push('/login');
         })
         .catch((error) => {
             console.error('Error during logout:', error);
@@ -78,7 +77,7 @@ const logout = () => {
                 <div class="layout-topbar-menu-content">
                     <div class="relative">
                         <button type="button" class="layout-topbar-action" @click="logout">
-                            <i class="pi pi-user"></i>
+                            <i class="pi pi-sign-out"></i>
                             <span>Logout</span>
                         </button>
                     </div>

@@ -5,7 +5,7 @@ const routes = [
     {
         path: '/login',
         name: 'login',
-        component: () => import('@/views/pages/auth/Login.vue'), 
+        component: () => import('@/views/pages/auth/Login.vue')
     },
     {
         path: '/dashboard',
@@ -109,26 +109,26 @@ const routes = [
                 component: () => import('@/views/pages/Documentation.vue')
             }
         ],
-        meta: { requiresAuth: true }, 
+        meta: { requiresAuth: true }
     },
     {
-        path: '/:pathMatch(.*)*', 
-        redirect: '/login',
-    },
+        path: '/:pathMatch(.*)*',
+        redirect: '/login'
+    }
 ];
 
 const router = createRouter({
     history: createWebHistory(),
-    routes,
+    routes
 });
 
-router.beforeEach((to, from, next) => {
-    const isAuthenticated = !!localStorage.getItem('token'); 
-    if (to.meta.requiresAuth && !isAuthenticated) {
-        next({ name: 'login' }); 
-    } else {
-        next(); 
-    }
-});
+// router.beforeEach((to, from, next) => {
+//     const isAuthenticated = !!localStorage.getItem('token');
+//     if (to.meta.requiresAuth && !isAuthenticated) {
+//         next({ name: 'login' });
+//     } else {
+//         next();
+//     }
+// });
 
 export default router;
