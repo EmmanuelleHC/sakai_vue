@@ -81,6 +81,7 @@ function deleteProduct() {
     toast.add({ severity: 'success', summary: 'Successful', detail: 'Product Deleted', life: 3000 });
 }
 
+
 function findIndexById(id) {
     let index = -1;
     for (let i = 0; i < products.value.length; i++) {
